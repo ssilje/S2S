@@ -32,8 +32,8 @@ basedict = {
 meta = {
     'tp': {
         'param': '228228',
-        'area': '25/21/-28/52',
-        'grid': '1/1',
+        'area': '10/-180/80/180',
+        'grid': '0.5/0.5',
         'levtype': 'sfc',
         'step': '/'.join(['%i'%i for i in range(0,721,24)])
     }
@@ -76,7 +76,7 @@ for filename in (
 
             for prefix in (
                 'cf',
-                'pf',
+           #     'pf',
             ):
 
                 target = '%s/%s_%s_%s.nc'%(datadir,filename,prefix,d)
