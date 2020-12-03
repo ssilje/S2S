@@ -33,7 +33,8 @@ meta = {
     'tp': {
         'param': '228228',
         'area': '10/-180/80/180',
-        'grid': '0.5/0.5',
+        'area': '-30/-180/30/180',
+        'grid': '1/1',
         'levtype': 'sfc',
         'step': '/'.join(['%i'%i for i in range(0,721,24)])
     }
