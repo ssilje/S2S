@@ -4,6 +4,7 @@ server = ECMWFDataServer()
 server.retrieve({
     "class": "s2",
     "dataset": "s2s",
+    'format': 'netcdf',
     "date": "2018-01-01/2018-01-04/2018-01-08/2018-01-11/2018-01-15/2018-01-18/2018-01-22/2018-01-25/2018-01-29",
     "expver": "prod",
     "levtype": "sfc",
