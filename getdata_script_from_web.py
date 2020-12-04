@@ -3,6 +3,7 @@ from ecmwfapi import ECMWFDataServer
 import os,sys
 from datetime import datetime
 server = ECMWFDataServer()
+datadir = 'DATA'
 
 basedict = {
     'class': 's2',
