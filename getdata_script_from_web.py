@@ -35,7 +35,8 @@ def getdatesformonth(month):
         if datetime.strptime(dates[0],'%Y-%m-%d').month == month:
             return dates
     return []   
-    
+
+# Program start
 for filename in (
     'tp',
     #'sst',
