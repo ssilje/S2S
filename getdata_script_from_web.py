@@ -41,33 +41,33 @@ def getdatesformonth(month):
     'tp',
     #'sst',
 ):
-     for month in range(1,2):
 
-        dates = getdatesformonth(month)
+for month in range(1,2):
 
-        for d in dates:
+    dates = getdatesformonth(month)
 
-            print(d)
-            refyear = int(d[:4])
-            hdate = '/'.join([d.replace('%i'%refyear,'%i'%i) for i in range(refyear-20,refyear)])
+    for d in dates:
+        print(d)
+        refyear = int(d[:4])
+        hdate = '/'.join([d.replace('%i'%refyear,'%i'%i) for i in range(refyear-20,refyear)])
 
-            for prefix in (
-                'cf',
+        for prefix in (
+            'cf',
            #     'pf',
-            ):
+        ):
 
-                target = '%s/%s_%s_%s.nc'%(datadir,filename,prefix,d)
-                if not os.path.isfile(target):
-                    dic = basedict.copy()
-                    for k,v in meta[filename].items():
-                        dic[k] = v
-                    dic['date'] = d
-                    dic['type'] = prefix
-                    dic['hdate'] = hdate
-                    dic['target'] = target
-                    if prefix == 'pf':
-                        dic['number'] = '1/2/3/4/5/6/7/8/9/10'
-                    print(dic)
-                    if server is not None:
-                        server.retrieve(dic)
+            target = '%s/%s_%s_%s.nc'%(datadir,filename,prefix,d)
+            if not os.path.isfile(target):
+                dic = basedict.copy()
+                for k,v in meta[filename].items():
+                    dic[k] = v
+                dic['date'] = d
+                dic['type'] = prefix
+                dic['hdate'] = hdate
+                dic['target'] = target
+                if prefix == 'pf':
+                    dic['number'] = '1/2/3/4/5/6/7/8/9/10'
+                print(dic)
+                if server is not None:
+                    server.retrieve(dic)
     
