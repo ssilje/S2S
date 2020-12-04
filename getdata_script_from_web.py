@@ -45,7 +45,7 @@ def getdatesformonth(month):
     
     #for month in [2,3,4,5,9,10,11,12]:
     #for month in [8]:
-    for month in range(1,13):
+    for month in range(1,2):
     #for month in [1]:
 
         dates = getdatesformonth(month)
