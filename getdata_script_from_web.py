@@ -36,38 +36,39 @@ def getdatesformonth(month):
             return dates
     return []   
     
-    
-    for filename in (
+for filename in (
     'tp',
     #'sst',
 ):
 
-for month in range(1,2):
+    #for month in [2,3,4,5,9,10,11,12]:
+    #for month in [8]:
+    for month in range(1,2):
 
-    dates = getdatesformonth(month)
+        dates = getdatesformonth(month)
 
-    for d in dates:
-        print(d)
-        refyear = int(d[:4])
-        hdate = '/'.join([d.replace('%i'%refyear,'%i'%i) for i in range(refyear-20,refyear)])
+        for d in dates:
 
-        for prefix in (
-            'cf',
-           #     'pf',
-        ):
+            print(d)
+            refyear = int(d[:4])
+            hdate = '/'.join([d.replace('%i'%refyear,'%i'%i) for i in range(refyear-20,refyear)])
 
-            target = '%s/%s_%s_%s.nc'%(datadir,filename,prefix,d)
-            if not os.path.isfile(target):
-                dic = basedict.copy()
-                for k,v in meta[filename].items():
-                    dic[k] = v
-                dic['date'] = d
-                dic['type'] = prefix
-                dic['hdate'] = hdate
-                dic['target'] = target
-                if prefix == 'pf':
-                    dic['number'] = '1/2/3/4/5/6/7/8/9/10'
-                print(dic)
-                if server is not None:
-                    server.retrieve(dic)
-    
+            for prefix in (
+                'cf',
+              #  'pf',
+            ):
+
+                target = '%s/%s_%s_%s.nc'%(datadir,filename,prefix,d)
+                if not os.path.isfile(target):
+                    dic = basedict.copy()
+                    for k,v in meta[filename].items():
+                        dic[k] = v
+                    dic['date'] = d
+                    dic['type'] = prefix
+                    dic['hdate'] = hdate
+                    dic['target'] = target
+                    if prefix == 'pf':
+                        dic['number'] = '1/2/3/4/5/6/7/8/9/10'
+                    print(dic)
+                    if server is not None:
+                        server.retrieve(dic)
