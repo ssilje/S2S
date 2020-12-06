@@ -35,17 +35,15 @@ def getdatesformonth(month):
             return dates
     return []   
     
-    
-    for filename in (
+   # Program start
+for filename in (
     'tp',
     #'sst',
 ):
-    
-    
+
     #for month in [2,3,4,5,9,10,11,12]:
     #for month in [8]:
-    for month in range(1,13):
-    #for month in [1]:
+    for month in range(1,2):
 
         dates = getdatesformonth(month)
 
@@ -57,7 +55,7 @@ def getdatesformonth(month):
 
             for prefix in (
                 'cf',
-           #     'pf',
+              #  'pf',
             ):
 
                 target = '%s/%s_%s_%s.nc'%(datadir,filename,prefix,d)
