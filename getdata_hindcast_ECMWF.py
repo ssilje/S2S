@@ -59,7 +59,7 @@ for filename in (
               #  'pf',
             ):
 
-                target = '%s/%s_%s_%s.nc'%(datadir,filename,prefix,d)
+                target = '%s/%s_%s_%s.grib'%(datadir,filename,prefix,d)
                 if not os.path.isfile(target):
                     dic = basedict.copy()
                     for k,v in meta[filename].items():
