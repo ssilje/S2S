@@ -30,6 +30,6 @@ DATE='2019-07-01 2019-07-04 2019-07-08 2019-07-11 2019-07-15 2019-07-18 2019-07-
 for d in ${DATE}; do 
   echo $d
   cp $run_dir/getdata_hindcast_ECMWF.py $run_dir/jobs/getdata_hindcast_ECMWF${d}.py 
-  sed -i "s/2018-01-01/$DATE/g" $run_dir/jobs/getdata_hindcast_ECMWF${d}.py 
+  sed -i "s/2018-01-01/$d/g" $run_dir/jobs/getdata_hindcast_ECMWF${d}.py 
 
 done
