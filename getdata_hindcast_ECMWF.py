@@ -48,7 +48,8 @@ for filename in (
 
             print(d)
             refyear = int(d[:4])
-            hdate = '/'.join([d.replace('%i'%refyear,'%i'%i) for i in range(refyear-20,refyear)])
+        #    hdate = '/'.join([d.replace('%i'%refyear,'%i'%i) for i in range(refyear-20,refyear)]) # Here the actual forecast date is not included (ends in 2017)
+            hdate = '/'.join([d.replace('%i'%refyear,'%i'%i) for i in range(refyear-20,refyear+1)]) # Here the actual forecast date is included (ends in 2018)
 
             for prefix in (
                 'cf',
