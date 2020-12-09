@@ -4,7 +4,7 @@ Scripts to download S2S model forecasts from ECMWF's Web-API:
 https://confluence.ecmwf.int/display/WEBAPI/Access+ECMWF+Public+Datasets
 
 1) Install the ECMWF key on your computer 
-2) Install the ecmwf-api-client library (I used Anaconda)
+2) Install the ecmwf-api-client library (use Anaconda)
 
 ### getdata_hindcast_ECMWF.py
 
