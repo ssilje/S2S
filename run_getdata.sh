@@ -2,6 +2,8 @@
 
 
 run_dir='/cluster/home/sso102/S2S/scripts/S2S'
+savedir='/cluster/work/users/sso102/S2S/ECMWF/TOT_PR'
+
 
 if [ ! -d ${run_dir}/jobs ]
 then
@@ -32,10 +34,14 @@ for d in ${DATE}; do
   cp $run_dir/getdata_hindcast_ECMWF.py $run_dir/jobs/getdata_hindcast_ECMWF${d}.py 
   sed -i "s/2018-01-01/$d/g" $run_dir/jobs/getdata_hindcast_ECMWF${d}.py 
   
+  if [ ! -f ${savedir}/tp_cf_${d}.grib ]
   echo "running python $run_dir/jobs/getdata_hindcast_ECMWF${d}.py"
   
   python $run_dir/jobs/getdata_hindcast_ECMWF${d}_test.py
 
   wait
   echo "done..."
+  else 
+  echo " File already downloded "
+  fi
 done
