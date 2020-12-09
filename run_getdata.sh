@@ -13,6 +13,15 @@ else
     mkdir ${run_dir}/jobs
 fi
 
+if [ ! -d ${savedir} ]
+then
+    mkdir ${savedir}
+
+fi
+
+# Forecast dates with the model version CY46R1: https://confluence.ecmwf.int/display/S2S/ECMWF+Model+Description+CY46R1
+# Data time of first forecast run:   11 June 2019
+# Here downloading reforecasts from 01.07.2019-30.06.2020 and 20 years back in time
 
 DATE='2019-07-01 2019-07-04 2019-07-08 2019-07-11 2019-07-15 2019-07-18 2019-07-22 2019-07-25 2019-07-29' 
 #        2019-08-01 2019-08-05 2019-08-08 2019-08-12 2019-08-15 2019-08-19 2019-08-22 2019-08-26 2019-08-29 
