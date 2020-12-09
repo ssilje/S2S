@@ -38,7 +38,7 @@ for d in ${DATE}; do
   then
   echo "running python $run_dir/jobs/getdata_hindcast_ECMWF${d}.py"
   
-  python $run_dir/jobs/getdata_hindcast_ECMWF${d}_test.py
+  python $run_dir/jobs/getdata_hindcast_ECMWF${d}.py
 
   wait
   echo "done..."
