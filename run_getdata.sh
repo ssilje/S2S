@@ -35,6 +35,7 @@ for d in ${DATE}; do
   sed -i "s/2018-01-01/$d/g" $run_dir/jobs/getdata_hindcast_ECMWF${d}.py 
   
   if [ ! -f ${savedir}/tp_cf_${d}.grib ]
+  then
   echo "running python $run_dir/jobs/getdata_hindcast_ECMWF${d}.py"
   
   python $run_dir/jobs/getdata_hindcast_ECMWF${d}_test.py
