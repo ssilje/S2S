@@ -64,6 +64,6 @@ for d in ${DATE}; do
                 echo " File already downloded "
             fi  
       else 
-      echo "Date not available for the the model version CY46R1"
+      echo "Date does not match the available date"
      fi
 done
