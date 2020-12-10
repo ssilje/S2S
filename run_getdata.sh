@@ -52,7 +52,7 @@ for d in ${DATE}; do
         cp $run_dir/getdata_hindcast_ECMWF.py $run_dir/jobs/getdata_hindcast_ECMWF${d}.py 
         sed -i "s/2018-01-01/$d/g" $run_dir/jobs/getdata_hindcast_ECMWF${d}.py 
   
-            if [ ! -f ${savedir}/tp_cf_${d}.grib ]
+            if [ ! -f ${savedir}/tp_cf_${d}.grb ]
                 then
                 echo "running python $run_dir/jobs/getdata_hindcast_ECMWF${d}.py"
   
