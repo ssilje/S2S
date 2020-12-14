@@ -51,7 +51,7 @@ for d in ${DATE}; do
     day=$(echo ${d} | cut -d'-' -f3)
     if [ $y == $year ] && [ $m == $month ]
         then
-        HC = 0
+        HC = '0'
         
         while [ HC -le 20  ] # 20 years hindcast
         do
