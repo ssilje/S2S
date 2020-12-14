@@ -47,19 +47,19 @@ for filename in (
         for d in dates:
             refyear = int(d[:4])
             prefix = 'cf'
-            for yy in range(0,20):
-                i =refyear-yy
-                hdate = '/'.join([d.replace('%i'%refyear,'%i'%i)])
-                target = '%s/%s_%s_%s_%s_%s.nc'%(datadir,filename,prefix,d,'hc', hdate)
+            yy = 0
+            i =refyear-yy
+            hdate = '/'.join([d.replace('%i'%refyear,'%i'%i)])
+            target = '%s/%s_%s_%s_%s_%s.nc'%(datadir,filename,prefix,d,'hc', hdate)
                 
-                if not os.path.isfile(target):
-                    dic = basedict.copy()
-                    for k,v in meta[filename].items():
-                        dic[k] = v
-                    dic['date'] = d
-                    dic['type'] = prefix
-                    dic['hdate'] = hdate
-                    dic['target'] = target
-                    print(dic)
-                    if server is not None:
-                        server.retrieve(dic)
+            if not os.path.isfile(target):
+                dic = basedict.copy()
+                for k,v in meta[filename].items():
+                    dic[k] = v
+                dic['date'] = d
+                dic['type'] = prefix
+                dic['hdate'] = hdate
+                dic['target'] = target
+                print(dic)
+                if server is not None:
+                    server.retrieve(dic)
