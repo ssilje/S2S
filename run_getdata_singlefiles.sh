@@ -53,7 +53,7 @@ for d in ${DATE}; do
         then
         HC='0'
         
-        while [ HC -le 20  ] # 20 years hindcast
+        while [ ${HC} -le 20  ] # 20 years hindcast
         do
             yHC=`expr ${y} - $HC`
             echo $yHC
