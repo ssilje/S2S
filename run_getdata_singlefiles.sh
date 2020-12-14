@@ -7,7 +7,7 @@ month=$(echo ${datein} | cut -d'-' -f2)
 echo ${datein}
 
 run_dir='/cluster/home/sso102/S2S/scripts/S2S'
-savedir='/cluster/work/users/sso102/S2S/ECMWF/TOT_PR'
+savedir='/cluster/work/users/sso102/S2S/ECMWF/TOT_PR_singlefiles'
 
 
 if [ ! -d ${run_dir}/jobs ]
