@@ -45,17 +45,11 @@ for filename in (
         dates = getdatesformonth(month)
 
         for d in dates:
-
-            print(d)
             refyear = int(d[:4])
-            hdate = '/'.join([d.replace('%i'%refyear,'%i'%i) for i in range(refyear-20,refyear)]) # Here the actual forecast date is not included (ends in 2017)
-         #   hdate = '/'.join([d.replace('%i'%refyear,'%i'%i) for i in range(refyear-20,refyear+1)]) # Here the actual forecast date is included (ends in 2018)
-
-            for prefix in (
-                'cf',
-              #  'pf',
-            ):
-
+            prefix = 'cf'
+            for yy in range(0,20):
+                i =refyear-yy
+                hdate = '/'.join([d.replace('%i'%refyear,'%i'%i)])
                 target = '%s/%s_%s_%s.grb'%(datadir,filename,prefix,d)
                 if not os.path.isfile(target):
                     dic = basedict.copy()
@@ -65,8 +59,6 @@ for filename in (
                     dic['type'] = prefix
                     dic['hdate'] = hdate
                     dic['target'] = target
-                    if prefix == 'pf':
-                        dic['number'] = '1/2/3/4/5/6/7/8/9/10'
                     print(dic)
                     if server is not None:
                         server.retrieve(dic)
