@@ -50,7 +50,8 @@ for filename in (
             for yy in range(0,20):
                 i =refyear-yy
                 hdate = '/'.join([d.replace('%i'%refyear,'%i'%i)])
-                target = '%s/%s_%s_%s.grb'%(datadir,filename,prefix,d)
+                target = '%s/%s_%s_%s_%s_%s.nc'%(datadir,filename,prefix,d,'hc', hdate)
+                
                 if not os.path.isfile(target):
                     dic = basedict.copy()
                     for k,v in meta[filename].items():
