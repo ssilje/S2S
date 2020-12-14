@@ -63,7 +63,7 @@ for d in ${DATE}; do
             sed -i "s/yy = 0/yy = ${HC}/g" $run_dir/jobs/getdata_hindcast_ECMWF${d}.py 
         
             HC=`expr ${HC} + 1`
-                if [ ! -f ${savedir}/tp_cf_${d}_hc_.grb ] tp_cf_2019-07-15_hc_2000-07-15.nc
+                if [ ! -f ${savedir}/tp_cf_${d}_hc_${yHC}_${m}_{d}.grb ] #tp_cf_2019-07-15_hc_2000-07-15.nc
                     then
                     echo "running python $run_dir/jobs/getdata_hindcast_ECMWF${d}.py"
   
