@@ -52,28 +52,31 @@ for d in ${DATE}; do
     if [ $y == $year ] && [ $m == $month ]
         then
         HC = 0
+        
         while [ HC -le 20  ] # 20 years hindcast
         do
-        yHC=`expr ${y} - $HC`
-        echo $yHC
-        echo $d
-        cp $run_dir/getdata_hindcast_ECMWF_singlefiles.py $run_dir/jobs/getdata_hindcast_ECMWF${d}.py 
-        sed -i "s/2018-01-01/$d/g" $run_dir/jobs/getdata_hindcast_ECMWF${d}.py 
-        sed -i "s/yy = 0/yy = ${HC}/g" $run_dir/jobs/getdata_hindcast_ECMWF${d}.py 
+            yHC=`expr ${y} - $HC`
+            echo $yHC
+            echo $d
+            cp $run_dir/getdata_hindcast_ECMWF_singlefiles.py $run_dir/jobs/getdata_hindcast_ECMWF${d}.py 
+            sed -i "s/2018-01-01/$d/g" $run_dir/jobs/getdata_hindcast_ECMWF${d}.py 
+            sed -i "s/yy = 0/yy = ${HC}/g" $run_dir/jobs/getdata_hindcast_ECMWF${d}.py 
         
-        HC=`expr ${HC} + 1`
-            if [ ! -f ${savedir}/tp_cf_${d}_hc_.grb ] tp_cf_2019-07-15_hc_2000-07-15.nc
-                then
-                echo "running python $run_dir/jobs/getdata_hindcast_ECMWF${d}.py"
+            HC=`expr ${HC} + 1`
+                if [ ! -f ${savedir}/tp_cf_${d}_hc_.grb ] tp_cf_2019-07-15_hc_2000-07-15.nc
+                    then
+                    echo "running python $run_dir/jobs/getdata_hindcast_ECMWF${d}.py"
   
-                python $run_dir/jobs/getdata_hindcast_ECMWF${d}.py
+                    python $run_dir/jobs/getdata_hindcast_ECMWF${d}.py
 
-                wait
-                echo "done..."
-                else 
-                echo " File already downloded "
-            fi  
-      else 
-      echo "Date does not match the available date"
+                    wait
+                    echo "done..."
+                    else 
+                    echo " File already downloded "
+                fi  
+        done
+        else
+        
+        echo "Date does not match the available date"
      fi
 done
