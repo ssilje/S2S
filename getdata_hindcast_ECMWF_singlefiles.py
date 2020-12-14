@@ -50,7 +50,7 @@ for filename in (
             yy = 0
             i =refyear-yy
             hdate = '/'.join([d.replace('%i'%refyear,'%i'%i)])
-            target = '%s/%s_%s_%s_%s_%s.nc'%(datadir,filename,prefix,d,'hc', hdate)
+            target = '%s/%s_%s_%s_%s_%s.grb'%(datadir,filename,prefix,d,'hc', hdate)
                 
             if not os.path.isfile(target):
                 dic = basedict.copy()
