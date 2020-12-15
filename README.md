@@ -44,11 +44,11 @@ Variable: Accumulated precipitation (228228)
 Resolution: 1 x 1 grid
 
 
-### run_getdata.sh
+### run_getdata_allyears.sh
 
 Downloading options for the reforecasts currently set from 01.07.2019-30.06.2020 and 20 years back in time
 run the script as: 
-  #### ./run_getdata.sh 
+  #### ./run_getdata_allyears.sh 
   
 Now you´re downloading all the reforecasts (with 40 days lead time) for the  dates for reforecasts from 01.07.2019-30.06.2020 and 20 years back in time and storing them in seperate grib-files (each reforecats in seperate files).
   
