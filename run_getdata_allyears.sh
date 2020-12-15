@@ -1,28 +1,17 @@
 #!/bin/bash
 
-# get argument                                                                                                                                                                                                                                                                                                                                         
-datein=${1}
-dateend=${2}
-
-year=$(echo ${datein} | cut -d'-' -f1)
-month=$(echo ${datein} | cut -d'-' -f2)
-echo ${datein}
-
-endyear=$(echo ${dateend} | cut -d'-' -f1)
-endmonth=$(echo ${dateend} | cut -d'-' -f2)
-echo ${dateend}
 
 
 run_dir='/cluster/home/sso102/S2S/scripts/S2S'
 savedir='/cluster/work/users/sso102/S2S/ECMWF/TOT_PR_singlefiles'
 
 
-if [ ! -d ${run_dir}/jobs.$ ]
+if [ ! -d ${run_dir}/jobs.$$ ]
 then
-    mkdir ${run_dir}/jobs.$
+    mkdir ${run_dir}/jobs.$$
 else
-    rm -r ${run_dir}/jobs.$
-    mkdir ${run_dir}/jobs.$
+    rm -r ${run_dir}/jobs.$$
+    mkdir ${run_dir}/jobs.$$
 fi
 
 if [ ! -d ${savedir} ]
