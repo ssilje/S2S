@@ -49,13 +49,13 @@ for d in ${DATE}; do
           yHC=`expr ${y} - $HC`
           echo $yHC
           echo $d
-          cp $run_dir/getdata_hindcast_ECMWF_singlefiles.py $run_dir/jobs/getdata_hindcast_ECMWF${d}_${yHC}.py 
-          sed -i "s/2018-01-01/$d/g" $run_dir/jobs/getdata_hindcast_ECMWF${d}_${yHC}.py 
-          sed -i "s/yy = 0/yy = ${HC}/g" $run_dir/jobs/getdata_hindcast_ECMWF${d}_${yHC}.py 
+          cp $run_dir/getdata_hindcast_ECMWF_singlefiles.py $run_dir/jobs.$$/getdata_hindcast_ECMWF${d}_${yHC}.py 
+          sed -i "s/2018-01-01/$d/g" $run_dir/jobs.$$/getdata_hindcast_ECMWF${d}_${yHC}.py 
+          sed -i "s/yy = 0/yy = ${HC}/g" $run_dir/jobs.$$/getdata_hindcast_ECMWF${d}_${yHC}.py 
           
           if [ ! -f ${savedir}/tp_cf_${d}_hc_${yHC}_${m}_{d}.grb ] ; then  #tp_cf_2019-07-15_hc_2000-07-15.nc
             echo "running python $run_dir/jobs/getdata_hindcast_ECMWF${d}_${yHC}.py"
-            python $run_dir/jobs/getdata_hindcast_ECMWF${d}_${yHC}.py
+            python $run_dir/jobs.$$/getdata_hindcast_ECMWF${d}_${yHC}.py
             wait
             echo "done..."
           else 
