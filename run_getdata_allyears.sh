@@ -49,49 +49,34 @@ DATE='2019-07-01 2019-07-04 2019-07-08 2019-07-11 2019-07-15 2019-07-18 2019-07-
         2020-06-01 2020-06-04 2020-06-08 2020-06-11 2020-06-15 2020-06-18 2020-06-22 2020-06-25 2020-06-29'
 
 
-while  [ ${year} -le $  ${endyear}] 
-do 
+
 for d in ${DATE}; do 
     y=$(echo ${d} | cut -d'-' -f1)
     m=$(echo ${d} | cut -d'-' -f2)
     day=$(echo ${d} | cut -d'-' -f3)
-    
-    if [ $y == $year ] && [ $m == $month ]
-        then
-        HC='0'
+    HC='0'
         
-        while [ ${HC} -le 20  ] # 20 years hindcast
-        do
-            yHC=`expr ${y} - $HC`
-            echo $yHC
-            echo $d
-            cp $run_dir/getdata_hindcast_ECMWF_singlefiles.py $run_dir/jobs/getdata_hindcast_ECMWF${d}_${yHC}.py 
-            sed -i "s/2018-01-01/$d/g" $run_dir/jobs/getdata_hindcast_ECMWF${d}_${yHC}.py 
-            sed -i "s/yy = 0/yy = ${HC}/g" $run_dir/jobs/getdata_hindcast_ECMWF${d}_${yHC}.py 
-        
-            HC=`expr ${HC} + 1`
-                if [ ! -f ${savedir}/tp_cf_${d}_hc_${yHC}_${m}_{d}.grb ] #tp_cf_2019-07-15_hc_2000-07-15.nc
-                    then
-                    echo "running python $run_dir/jobs/getdata_hindcast_ECMWF${d}_${yHC}.py"
-  
-                    python $run_dir/jobs/getdata_hindcast_ECMWF${d}_${yHC}.py
-
-                    wait
-                    echo "done..."
-                    else 
-                    echo " File already downloded "
-                fi  
-        done
+    while [ ${HC} -le 20  ] ; do # 20 years hindcast
+          yHC=`expr ${y} - $HC`
+          echo $yHC
+          echo $d
+          cp $run_dir/getdata_hindcast_ECMWF_singlefiles.py $run_dir/jobs/getdata_hindcast_ECMWF${d}_${yHC}.py 
+          sed -i "s/2018-01-01/$d/g" $run_dir/jobs/getdata_hindcast_ECMWF${d}_${yHC}.py 
+          sed -i "s/yy = 0/yy = ${HC}/g" $run_dir/jobs/getdata_hindcast_ECMWF${d}_${yHC}.py 
+          
+          if [ ! -f ${savedir}/tp_cf_${d}_hc_${yHC}_${m}_{d}.grb ] ; then  #tp_cf_2019-07-15_hc_2000-07-15.nc
+            echo "running python $run_dir/jobs/getdata_hindcast_ECMWF${d}_${yHC}.py"
+            python $run_dir/jobs/getdata_hindcast_ECMWF${d}_${yHC}.py
+            wait
+            echo "done..."
+          else 
+            echo " File already downloded "
+           fi  
+                
+      HC=`expr ${HC} + 1`
+      done
  
-     fi
-     year=`expr ${year} +1 `
-     done
-     
+   
 done
 
 
-if [ ${NEXTYEAR} -le ${ENDYEAR} ]
-then
- cd $clm_scriptdir
- sbatch -M pilatus cclmpost_mon_day_mean_pilatus_MPI-ESM-LR.bash ${NEXTYEAR} ${ENDYEAR}
-fi
