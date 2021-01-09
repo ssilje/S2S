@@ -49,7 +49,7 @@ for filename in (
             prefix = 'cf'
             hdate = '/'.join([d.replace('%i'%refyear,'%i'%i) for i in range(refyear-20,refyear)])
             #target = '%s/%s_%s_%s_%s_%s.grb'%(datadir,filename,prefix,d,'hc', hdate)
-            target = '%s/%s_%s_%s_%s_%s.grb'%(datadir,filename,'CY46R1',d,prefix, hdate)
+            target = '%s/%s_%s_%s_%s.grb'%(datadir,filename,'CY46R1',d,prefix)
 
             #tp_CY46R1_${d}_cf.grb
             if not os.path.isfile(target):
