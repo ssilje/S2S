@@ -2,7 +2,8 @@
 
 
 
-run_dir='/cluster/home/sso102/S2S/scripts/S2S'
+#run_dir='/cluster/home/sso102/S2S/scripts/S2S'
+run_dir=$(echo pwd)
 savedir='/cluster/work/users/sso102/S2S/ECMWF/TOT_PR_singlefiles'
 
 
