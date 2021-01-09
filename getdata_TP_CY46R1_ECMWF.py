@@ -3,7 +3,7 @@ from ecmwfapi import ECMWFDataServer
 import os,sys
 from datetime import datetime
 server = ECMWFDataServer()
-datadir = '/cluster/work/users/sso102/S2S/hindcast/ECMWF/sfc/PR'
+datadir = '/cluster/work/users/sso102/S2S/hindcast/ECMWF/sfc/tp'
 
 basedict = {
     'class': 's2',
