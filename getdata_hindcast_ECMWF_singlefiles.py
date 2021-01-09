@@ -49,8 +49,8 @@ for filename in (
             prefix = 'cf'
             yy = 0
             i =refyear-yy
-            hdate = '/'.join([d.replace('%i'%refyear,'%i'%i)])
-            hdate_test = '/'.join([d.replace('%i'%refyear,'%i'%i) for i in range(refyear-20,refyear)])
+            #hdate = '/'.join([d.replace('%i'%refyear,'%i'%i)])
+            hdate = '/'.join([d.replace('%i'%refyear,'%i'%i) for i in range(refyear-20,refyear)])
             target = '%s/%s_%s_%s_%s_%s.grb'%(datadir,filename,prefix,d,'hc', hdate)
                 
             if not os.path.isfile(target):
