@@ -20,7 +20,7 @@ meta = {
         'param': '228228',  
         'levtype': 'sfc',
         'grid': '1/1',
-        'step': '/'.join(['%i'%i for i in range(0,961,24)]) # 40 days forecast
+        'step': '/'.join(['%i'%i for i in range(0,1104,24)]) # 40 days forecast
     }
 
 }
@@ -50,6 +50,7 @@ for filename in (
             yy = 0
             i =refyear-yy
             hdate = '/'.join([d.replace('%i'%refyear,'%i'%i)])
+            hdate_test = '/'.join([d.replace('%i'%refyear,'%i'%i) for i in range(refyear-20,refyear)])
             target = '%s/%s_%s_%s_%s_%s.grb'%(datadir,filename,prefix,d,'hc', hdate)
                 
             if not os.path.isfile(target):
