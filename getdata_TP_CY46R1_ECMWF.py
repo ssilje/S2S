@@ -60,6 +60,8 @@ for filename in (
                 dic['type'] = prefix
                 dic['hdate'] = hdate
                 dic['target'] = target
+                if prefix == 'pf':
+                    dic['number'] = '1/2/3/4/5/6/7/8/9/10'
                 print(dic)
                 if server is not None:
                     server.retrieve(dic)
