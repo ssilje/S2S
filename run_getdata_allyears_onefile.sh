@@ -60,5 +60,4 @@ for d in ${DATE}; do
       HC=`expr ${HC} + 1`
       done
  
-   
-done
+
