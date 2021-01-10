@@ -46,7 +46,7 @@ for filename in (
 
         for d in dates:
             refyear = int(d[:4])
-            prefix = 'cf'
+            prefix = 'pf'
             hdate = '/'.join([d.replace('%i'%refyear,'%i'%i) for i in range(refyear-20,refyear)])
             #target = '%s/%s_%s_%s_%s_%s.grb'%(datadir,filename,prefix,d,'hc', hdate)
             target = '%s/%s_%s_%s_%s.grb'%(datadir,filename,'CY46R1',d,prefix)
