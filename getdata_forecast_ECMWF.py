@@ -3,7 +3,7 @@ from ecmwfapi import ECMWFDataServer
 import os,sys
 from datetime import datetime
 server = ECMWFDataServer()
-datadir = '/cluster/work/users/sso102/S2S/ECMWF/TOT_PR'
+datadir = '/cluster/work/users/sso102/S2S/forecast/ECMWF/sfc/tp'
 
 basedict = {
     'class': 's2',
@@ -11,7 +11,7 @@ basedict = {
     'expver': 'prod',
     'model': 'glob',
     'origin': 'ecmf',
-    'stream': 'enfo', #changed 
+    'stream': 'enfo', #changed from enfh
     'time': '00:00:00'
 }
 
@@ -46,8 +46,9 @@ for filename in (
 
         for d in dates:
             prefix = 'cf'
-            target = '%s/%s_%s_%s_%s_%s.grb'%(datadir,filename,prefix,d)
-                
+            target = '%s/%s_%s_%s_%s.grb'%(datadir,filename,'CY46R1',prefix,d)
+            #target = '%s/%s_%s_%s_%s.grb'%(datadir,filename,'CY46R1',d,prefix)    
+            
             if not os.path.isfile(target):
                 dic = basedict.copy()
                 for k,v in meta[filename].items():
