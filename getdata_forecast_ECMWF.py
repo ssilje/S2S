@@ -20,7 +20,7 @@ meta = {
         'param': '228228',  
         'levtype': 'sfc',
         'grid': '1/1',
-        'step': '/'.join(['%i'%i for i in range(0,961,24)]) # 40 days forecast
+        'step': '/'.join(['%i'%i for i in range(0,1104,24)]) # 40 days forecast
     }
 
 }
@@ -45,12 +45,8 @@ for filename in (
         dates = getdatesformonth(month)
 
         for d in dates:
-            refyear = int(d[:4])
             prefix = 'cf'
-            yy = 0
-            i =refyear-yy
-            hdate = '/'.join([d.replace('%i'%refyear,'%i'%i)])
-            target = '%s/%s_%s_%s_%s_%s.grb'%(datadir,filename,prefix,d,'hc', hdate)
+            target = '%s/%s_%s_%s_%s_%s.grb'%(datadir,filename,prefix,d)
                 
             if not os.path.isfile(target):
                 dic = basedict.copy()
@@ -58,7 +54,6 @@ for filename in (
                     dic[k] = v
                 dic['date'] = d
                 dic['type'] = prefix
-                dic['hdate'] = hdate
                 dic['target'] = target
                 print(dic)
                 if server is not None:
