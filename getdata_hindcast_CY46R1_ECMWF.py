@@ -50,7 +50,7 @@ def getdatesformonth(month):
     
    # Program start
 for filename in (
-    'tp',
+ #   'tp',
     't2m',
 ):
     for month in range(1,13):
