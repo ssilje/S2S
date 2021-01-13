@@ -59,7 +59,7 @@ for filename in (
 
         for d in dates:
             refyear = int(d[:4])
-            prefix = 'cf'
+            prefix = 'pf'
             datadir = '%s/%s'%(dir,filename)
             if not os.path.exists(datadir)  :
                 os.makedirs(datadir)
