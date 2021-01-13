@@ -62,7 +62,7 @@ for filename in (
             prefix = 'pf'
             datadir = '%s/%s'%(dir,filename)
             if not os.path.exists(datadir)  :
-                os.makedirs(datadir
+                os.makedirs(datadir)
             target = '%s/%s_%s_%s_%s.grb'%(datadir,filename,forcastcycle,prefix,d)
            # target = '%s/%s_%s_%s_%s.grb'%(datadir,filename,'CY46R1',prefix,d)
             #target = '%s/%s_%s_%s_%s.grb'%(datadir,filename,'CY46R1',d,prefix)    
