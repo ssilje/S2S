@@ -45,7 +45,7 @@ for d in ${DATE}; do
     cp $run_dir/getdata_hindcast_CY46R1_ECMWF.py $run_dir/jobs.$$/getdata_hindcast_CY46R1_ECMWF_${d}.py 
     sed -i "s/2018-01-01/$d/g" $run_dir/jobs.$$/getdata_hindcast_CY46R1_ECMWF_${d}.py 
                
-    if [ ! -f ${savedir}/t2m_CY46R1_${d}_cf.grb ] ; then   #tp_CY46R1_2020-02-27_pf.grb
+    if [ ! -f ${savedir}/t2m_CY46R1_${d}_pf.grb ] ; then   #tp_CY46R1_2020-02-27_pf.grb
             echo "running python getdata_hindcast_CY46R1_ECMWF_${d}.py  "
             python $run_dir/jobs.$$/getdata_hindcast_CY46R1_ECMWF_${d}.py  
             wait
