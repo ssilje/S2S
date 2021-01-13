@@ -5,7 +5,7 @@ import os,sys
 from datetime import datetime
 server = ECMWFDataServer()
 #datadir = '/cluster/work/users/sso102/S2S/forecast/ECMWF/sfc/tp'
-dir = '/cluster/work/users/sso102/S2S/hindcast/ECMWF/sfc'
+dir = '/cluster/work/users/sso102/S2S/forecast/ECMWF/sfc'
 forcastcycle = 'CY46R1'
 basedict = {
     'class': 's2',
