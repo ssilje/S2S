@@ -4,10 +4,21 @@ run_dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 echo $run_dir
 var='tp'
 ftype='pf' #cf
+forcastcycle='CY46R1'
+product='hindcast' # forecast
+if [ ${product} == 'hindcast' ]
+then
+stream=enfh
+elif [ ${product} == 'forecast' ]
+stream=enfo
+fi
+
+
+
 #   'tp',
 #   't2m',
 #   'sst',
-savedir=/cluster/work/users/sso102/S2S/hindcast/ECMWF/sfc/${var} #needs to match the dir in getdata_TP_CY46R1_ECMWF.py
+savedir=/cluster/work/users/sso102/S2S/${product}/ECMWF/sfc/${var} #needs to match the dir in getdata_TP_CY46R1_ECMWF.py
 
 
 if [ ! -d ${run_dir}/jobs.$$ ]
@@ -47,15 +58,17 @@ for d in ${DATE}; do
     y=$(echo ${d} | cut -d'-' -f1)
     m=$(echo ${d} | cut -d'-' -f2)
     day=$(echo ${d} | cut -d'-' -f3)
-    cp $run_dir/getdata_hindcast_CY46R1_ECMWF.py $run_dir/jobs.$$/getdata_hindcast_CY46R1_ECMWF_${d}.py 
-    sed -i "s/2018-01-01/$d/g" $run_dir/jobs.$$/getdata_hindcast_CY46R1_ECMWF_${d}.py 
-    sed -i "s/VAR/${var}/g" $run_dir/jobs.$$/getdata_hindcast_CY46R1_ECMWF_${d}.py 
-    sed -i "s/ftype/${ftype}/g" $run_dir/jobs.$$/getdata_hindcast_CY46R1_ECMWF_${d}.py 
+    cp $run_dir/getdata_${forcastcycle}_ECMWF.py $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py 
+    sed -i "s/2018-01-01/$d/g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py 
+    sed -i "s/VAR/${var}/g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py
+    sed -i "s/ftype/${ftype}/g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py
+    sed -i "s/STREAM/${stream}/g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py
+
     
                
-    if [ ! -f ${savedir}/${var}_CY46R1_${d}_${ftype}.grb ] ; then   #tp_CY46R1_2020-02-27_pf.grb
-            echo "running python getdata_hindcast_CY46R1_ECMWF_${d}.py  "
-            python $run_dir/jobs.$$/getdata_hindcast_CY46R1_ECMWF_${d}.py  
+    if [ ! -f ${savedir}/${var}_${forcastcycle}_${d}_${ftype}.grb ] ; then   #tp_CY46R1_2020-02-27_pf.grb
+            echo "running python getdata_${forcastcycle}_ECMWF_${d}.py  "
+            python $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py 
             wait
             echo "done..."
           else 
