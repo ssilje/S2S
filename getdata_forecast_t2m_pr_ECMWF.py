@@ -59,7 +59,7 @@ for filename in (
         dates = getdatesformonth(month)
 
         for d in dates:
-            prefix = 'pf'
+            prefix = 'cf'
             datadir = '%s/%s'%(dir,filename)
             if not os.path.exists(datadir)  :
                 os.makedirs(datadir)
