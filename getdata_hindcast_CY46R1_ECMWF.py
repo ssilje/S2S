@@ -34,6 +34,13 @@ meta = {
         'levtype': 'sfc',
         'grid': '1/1',
         'step': '/'.join([final]) 
+    },
+    
+     'sst': {
+        'param': '34',  
+        'levtype': 'sfc',
+        'grid': '1/1',
+        'step': '/'.join([final]) 
     }
 
 }
@@ -51,7 +58,8 @@ def getdatesformonth(month):
    # Program start
 for filename in (
  #   'tp',
-    't2m',
+ #   't2m',
+    'sst',
 ):
     for month in range(1,13):
 

@@ -1,21 +1,19 @@
 #!/bin/bash
 
-# get argument                                                                                                                                                                                                                                                                                                                                         
-datein=${1}
-year=$(echo ${datein} | cut -d'-' -f1)
-month=$(echo ${datein} | cut -d'-' -f2)
-echo ${datein}
-
-run_dir='/cluster/home/sso102/S2S/scripts/S2S'
-savedir='/cluster/work/users/sso102/S2S/ECMWF/TOT_PR'
+run_dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+echo $run_dir
+var='sst'
+type='cf'
+savedir=/cluster/work/users/sso102/S2S/forecast/ECMWF/sfc/${var}
 
 
-if [ ! -d ${run_dir}/jobs ]
+
+if [ ! -d ${run_dir}/jobs.$$ ]
 then
-    mkdir ${run_dir}/jobs
+    mkdir ${run_dir}/jobs.$$
 else
-    rm -r ${run_dir}/jobs
-    mkdir ${run_dir}/jobs
+    rm -r ${run_dir}/jobs.$$
+    mkdir ${run_dir}/jobs.$$
 fi
 
 if [ ! -d ${savedir} ]
@@ -46,24 +44,18 @@ DATE='2019-07-01 2019-07-04 2019-07-08 2019-07-11 2019-07-15 2019-07-18 2019-07-
 for d in ${DATE}; do 
     y=$(echo ${d} | cut -d'-' -f1)
     m=$(echo ${d} | cut -d'-' -f2)
-    if [ $y == $year ] && [ $m == $month ]
-        then
-        echo $d
-        cp $run_dir/getdata_hindcast_ECMWF.py $run_dir/jobs/getdata_hindcast_ECMWF${d}.py 
-        sed -i "s/2018-01-01/$d/g" $run_dir/jobs/getdata_hindcast_ECMWF${d}.py 
-  
-            if [ ! -f ${savedir}/tp_cf_${d}.grb ]
-                then
-                echo "running python $run_dir/jobs/getdata_hindcast_ECMWF${d}.py"
-  
-                python $run_dir/jobs/getdata_hindcast_ECMWF${d}.py
-
-                wait
-                echo "done..."
-                else 
-                echo " File already downloded "
-            fi  
-      else 
-      echo "Date does not match the available date"
-     fi
-done
+    day=$(echo ${d} | cut -d'-' -f3)
+    cp $run_dir/getdata_forecast_CY46R1_ECMWF.py $run_dir/jobs.$$/getdata_forecast_CY46R1_ECMWF_${d}.py 
+    sed -i "s/2018-01-01/$d/g" $run_dir/jobs.$$/getdata_forecast_CY46R1_ECMWF_${d}.py  
+               
+    if [ ! -f ${savedir}/${var}_CY46R1_${d}_${type}.grb ] ; then   #tp_CY46R1_2020-02-27_pf.grb
+            echo "running python getdata_forecast_CY46R1_ECMWF_${d}.py  "
+            python $run_dir/jobs.$$/getdata_forecast_CY46R1_ECMWF_${d}.py 
+            wait
+            echo "done..."
+          else 
+            echo " File already downloded "
+           fi  
+                
+    
+      done
