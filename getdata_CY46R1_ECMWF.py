@@ -3,9 +3,14 @@ from ecmwfapi import ECMWFDataServer
 import os,sys
 from datetime import datetime
 server = ECMWFDataServer()
-
+product = 'PRODUCT' # forecast
 #datadir = '/cluster/work/users/sso102/S2S/hindcast/ECMWF/sfc/tp'
-dir = '/cluster/work/users/sso102/S2S/hindcast/ECMWF/sfc'
+#dir = '/cluster/work/users/sso102/S2S/hindcast/ECMWF/sfc'
+
+product = 'hindcast' # forecast
+dirbase = '/cluster/work/users/sso102/S2S/'
+dir = '%s/%s/%s/'%(dirbase,product,'/ECMWF/sfc')
+
 forcastcycle = 'CY46R1'
 basedict = {
     'class': 's2',
@@ -13,7 +18,7 @@ basedict = {
     'expver': 'prod',
     'model': 'glob',
     'origin': 'ecmf',
-    'stream': 'enfh',
+    'stream': 'STREAM',
     'time': '00:00:00'
 }
 
@@ -82,10 +87,15 @@ for filename in (
                     dic[k] = v
                 dic['date'] = d
                 dic['type'] = prefix
-                dic['hdate'] = hdate
+                if ( product == hindcast):
+                    dic['hdate'] = hdate
+                    if prefix == 'pf':
+                        dic['number'] = '1/2/3/4/5/6/7/8/9/10'
+                if ( product == forecast)
+                    if prefix == 'pf':
+                        dic['number'] = '1/2/3/4/5/6/7/8/9/10/11/12/13/14/15/16/17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50'
                 dic['target'] = target
-                if prefix == 'pf':
-                    dic['number'] = '1/2/3/4/5/6/7/8/9/10'
+                
                 print(dic)
                 if server is not None:
                     server.retrieve(dic)
