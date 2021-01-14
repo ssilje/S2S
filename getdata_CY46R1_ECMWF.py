@@ -87,7 +87,7 @@ for filename in (
                     dic[k] = v
                 dic['date'] = d
                 dic['type'] = prefix
-                if ( product == hindcast):
+                if ( product == hindcast ):
                     dic['hdate'] = hdate
                     if prefix == 'pf':
                         dic['number'] = '1/2/3/4/5/6/7/8/9/10'
