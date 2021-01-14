@@ -4,14 +4,10 @@ import os,sys
 from datetime import datetime
 server = ECMWFDataServer()
 product = 'PRODUCT' # forecast
-#datadir = '/cluster/work/users/sso102/S2S/hindcast/ECMWF/sfc/tp'
-#dir = '/cluster/work/users/sso102/S2S/hindcast/ECMWF/sfc'
-
-product = 'hindcast' # forecast
 dirbase = '/cluster/work/users/sso102/S2S/'
 dir = '%s/%s/%s/'%(dirbase,product,'/ECMWF/sfc')
-
 forcastcycle = 'CY46R1'
+
 basedict = {
     'class': 's2',
     'dataset': 's2s',
@@ -62,9 +58,6 @@ def getdatesformonth(month):
     
    # Program start
 for filename in (
- #   'tp',
- #   't2m',
- #   'sst',
     'VAR',
 ):
     for month in range(1,13):
@@ -80,7 +73,7 @@ for filename in (
             hdate = '/'.join([d.replace('%i'%refyear,'%i'%i) for i in range(refyear-20,refyear)])
             target = '%s/%s_%s_%s_%s.grb'%(datadir,filename,forcastcycle,d,prefix)
 
-            #tp_CY46R1_${d}_cf.grb
+        
             if not os.path.isfile(target):
                 dic = basedict.copy()
                 for k,v in meta[filename].items():
