@@ -17,9 +17,9 @@ Lead time: 46 days (time step daily)
 Model: ECMWF control forecasts (model version CY46R1, https://confluence.ecmwf.int/display/S2S/ECMWF+Model+Description+CY46R1) 
 
 Variable: 
-Accumulated precipitation:(228228)
-t2m (167)  
-sst (34)
+- Accumulated precipitation(228228)
+- t2m (167)  
+- sst (34)
 
 Resolution: 1 x 1 grid
 
