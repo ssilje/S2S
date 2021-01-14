@@ -63,6 +63,8 @@ for d in ${DATE}; do
     sed -i "s/VAR/${var}/g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py
     sed -i "s/ftype/${ftype}/g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py
     sed -i "s/STREAM/${stream}/g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py
+    sed -i "s/PRODUCT/${product}/g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py
+    
 
     
                
