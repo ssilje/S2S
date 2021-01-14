@@ -2,7 +2,8 @@
 
 run_dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 echo $run_dir
-savedir='/cluster/work/users/sso102/S2S/hindcast/ECMWF/sfc/t2m' #needs to match the dir in getdata_TP_CY46R1_ECMWF.py
+var='sst'
+savedir=/cluster/work/users/sso102/S2S/hindcast/ECMWF/sfc/${var} #needs to match the dir in getdata_TP_CY46R1_ECMWF.py
 
 
 if [ ! -d ${run_dir}/jobs.$$ ]
