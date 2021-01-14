@@ -2,7 +2,7 @@
 
 run_dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 echo $run_dir
-var='sst'
+var='tp'
 ftype='pf' #cf
 #   'tp',
 #   't2m',
