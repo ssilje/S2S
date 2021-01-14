@@ -10,6 +10,7 @@ if [ ${product} == 'hindcast' ]
 then
 stream=enfh
 elif [ ${product} == 'forecast' ]
+then
 stream=enfo
 fi
 
