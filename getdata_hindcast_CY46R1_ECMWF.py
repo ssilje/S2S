@@ -59,7 +59,8 @@ def getdatesformonth(month):
 for filename in (
  #   'tp',
  #   't2m',
-    'sst',
+ #   'sst',
+    'VAR',
 ):
     for month in range(1,13):
 
@@ -67,7 +68,7 @@ for filename in (
 
         for d in dates:
             refyear = int(d[:4])
-            prefix = 'pf'
+            prefix = 'ftype'
             datadir = '%s/%s'%(dir,filename)
             if not os.path.exists(datadir)  :
                 os.makedirs(datadir)
