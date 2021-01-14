@@ -6,7 +6,7 @@ forcastcycle='CY46R1'
 
 var='tp' # sst, t2m, tp
 ftype='pf' #cf, pf
-product='hindcast' # forecast, hindcast
+product='forecast' # forecast, hindcast
 
 if [ ${product} == 'hindcast' ]
 then
@@ -16,11 +16,6 @@ then
 stream=enfo
 fi
 
-
-
-#   'tp',
-#   't2m',
-#   'sst',
 savedir=/cluster/work/users/sso102/S2S/${product}/ECMWF/sfc/${var} #needs to match the dir in getdata_TP_CY46R1_ECMWF.py
 
 
