@@ -2,10 +2,12 @@
 
 run_dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 echo $run_dir
-var='tp'
-ftype='pf' #cf
 forcastcycle='CY46R1'
-product='hindcast' # forecast
+
+var='tp' # sst, t2m, tp
+ftype='cf' #cf, pf
+product='hindcast' # forecast, hindcast
+
 if [ ${product} == 'hindcast' ]
 then
 stream=enfh
