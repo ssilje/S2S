@@ -2,7 +2,10 @@
 
 run_dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 echo $run_dir
-savedir='/cluster/work/users/sso102/S2S/forecast/ECMWF/sfc/t2m' #needs to match the dir in getdata_forecast_t2m_pr_ECMWF.py 
+var='sst'
+type='cf'
+savedir=/cluster/work/users/sso102/S2S/forecast/ECMWF/sfc/${var}
+
 
 
 if [ ! -d ${run_dir}/jobs.$$ ]
@@ -42,12 +45,12 @@ for d in ${DATE}; do
     y=$(echo ${d} | cut -d'-' -f1)
     m=$(echo ${d} | cut -d'-' -f2)
     day=$(echo ${d} | cut -d'-' -f3)
-    cp $run_dir/getdata_forecast_t2m_pr_ECMWF.py $run_dir/jobs.$$/getdata_forecast_t2m_pr_ECMWF_${d}.py 
-    sed -i "s/2018-01-01/$d/g" $run_dir/jobs.$$/getdata_forecast_t2m_pr_ECMWF_${d}.py 
+    cp $run_dir/getdata_forecast_CY46R1_ECMWF.py $run_dir/jobs.$$/getdata_forecast_CY46R1_ECMWF_${d}.py 
+    sed -i "s/2018-01-01/$d/g" $run_dir/jobs.$$/getdata_forecast_CY46R1_ECMWF_${d}.py  
                
-    if [ ! -f ${savedir}/t2m_CY46R1_${d}_cf.grb ] ; then   #tp_CY46R1_2020-02-27_pf.grb
-            echo "running python getdata_forecast_t2m_pr_ECMWF_${d}.py "
-            python $run_dir/jobs.$$/getdata_forecast_t2m_pr_ECMWF_${d}.py 
+    if [ ! -f ${savedir}/${var}_CY46R1_${d}_${type}.grb ] ; then   #tp_CY46R1_2020-02-27_pf.grb
+            echo "running python getdata_forecast_CY46R1_ECMWF_${d}.py  "
+            python $run_dir/jobs.$$/getdata_forecast_CY46R1_ECMWF_${d}.py 
             wait
             echo "done..."
           else 
