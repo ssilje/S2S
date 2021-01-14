@@ -4,7 +4,7 @@ from ecmwfapi import ECMWFDataServer
 import os,sys
 from datetime import datetime
 server = ECMWFDataServer()
-#datadir = '/cluster/work/users/sso102/S2S/forecast/ECMWF/sfc/tp'
+
 dir = '/cluster/work/users/sso102/S2S/forecast/ECMWF/sfc'
 forcastcycle = 'CY46R1'
 basedict = {
@@ -34,6 +34,13 @@ meta = {
         'levtype': 'sfc',
         'grid': '1/1',
         'step': '/'.join([final]) 
+    },
+  
+    'sst': {
+        'param': '34',  
+        'levtype': 'sfc',
+        'grid': '1/1',
+        'step': '/'.join([final]) 
     }
 
 
@@ -52,7 +59,7 @@ def getdatesformonth(month):
    # Program start
 for filename in (
     #'tp',
-    't2m',
+    'sst',
 ):
     for month in range(1,13):
 
@@ -64,9 +71,7 @@ for filename in (
             if not os.path.exists(datadir)  :
                 os.makedirs(datadir)
             target = '%s/%s_%s_%s_%s.grb'%(datadir,filename,forcastcycle,prefix,d)
-           # target = '%s/%s_%s_%s_%s.grb'%(datadir,filename,'CY46R1',prefix,d)
-            #target = '%s/%s_%s_%s_%s.grb'%(datadir,filename,'CY46R1',d,prefix)    
-            
+             
             if not os.path.isfile(target):
                 dic = basedict.copy()
                 for k,v in meta[filename].items():
