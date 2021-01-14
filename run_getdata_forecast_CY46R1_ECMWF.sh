@@ -1,9 +1,11 @@
 #!/bin/bash
 
+run_dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+echo $run_dir
+var='sst'
+type='cf'
+savedir=/cluster/work/users/sso102/S2S/forecast/ECMWF/sfc/${var}
 
-
-run_dir='/cluster/home/sso102/S2S/scripts/S2S'
-savedir='/cluster/work/users/sso102/S2S/ECMWF/TOT_PR_singlefiles'
 
 
 if [ ! -d ${run_dir}/jobs.$$ ]
@@ -43,29 +45,17 @@ for d in ${DATE}; do
     y=$(echo ${d} | cut -d'-' -f1)
     m=$(echo ${d} | cut -d'-' -f2)
     day=$(echo ${d} | cut -d'-' -f3)
-    HC='0'
-        
-    while [ ${HC} -le 20  ] ; do # 20 years hindcast
-          yHC=`expr ${y} - $HC`
-          echo $yHC
-          echo $d
-          cp $run_dir/getdata_hindcast_ECMWF_singlefiles.py $run_dir/jobs.$$/getdata_hindcast_ECMWF${d}_${yHC}.py 
-          sed -i "s/2018-01-01/$d/g" $run_dir/jobs.$$/getdata_hindcast_ECMWF${d}_${yHC}.py 
-          sed -i "s/yy = 0/yy = ${HC}/g" $run_dir/jobs.$$/getdata_hindcast_ECMWF${d}_${yHC}.py 
-          
-          if [ ! -f ${savedir}/tp_cf_${d}_hc_${yHC}_${m}_{d}.grb ] ; then  #tp_cf_2019-07-15_hc_2000-07-15.nc
-            echo "running python $run_dir/jobs/getdata_hindcast_ECMWF${d}_${yHC}.py"
-            python $run_dir/jobs.$$/getdata_hindcast_ECMWF${d}_${yHC}.py
+    cp $run_dir/getdata_forecast_CY46R1_ECMWF.py $run_dir/jobs.$$/getdata_forecast_CY46R1_ECMWF_${d}.py 
+    sed -i "s/2018-01-01/$d/g" $run_dir/jobs.$$/getdata_forecast_CY46R1_ECMWF_${d}.py  
+               
+    if [ ! -f ${savedir}/${var}_CY46R1_${d}_${type}.grb ] ; then   #tp_CY46R1_2020-02-27_pf.grb
+            echo "running python getdata_forecast_CY46R1_ECMWF_${d}.py  "
+            python $run_dir/jobs.$$/getdata_forecast_CY46R1_ECMWF_${d}.py 
             wait
             echo "done..."
           else 
             echo " File already downloded "
            fi  
                 
-      HC=`expr ${HC} + 1`
+    
       done
- 
-   
-done
-
-
