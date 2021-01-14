@@ -28,9 +28,9 @@ Resolution: 1 x 1 grid
 
 Downloading options for the reforecasts and forecast currently set from 01.07.2019-30.06.2020 and 20 years back in time
 Need to set in the script: 
-## var='tp' # sst, t2m, tp
-## ftype='pf' #cf, pf
-## product='forecast' # forecast, hindcast
+### var='tp' # sst, t2m, tp
+### ftype='pf' #cf, pf
+### product='forecast' # forecast, hindcast
 
 run the script as: ./run_getdata_CY46R1_ECMWF.sh
 
