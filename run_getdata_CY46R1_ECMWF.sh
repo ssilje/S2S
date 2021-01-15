@@ -5,7 +5,7 @@ echo $run_dir
 forcastcycle='CY46R1'
 
 var='sst' # sst, t2m, tp
-ftype='pf' #cf, pf
+ftype='cf' #cf, pf
 product='forecast' # forecast, hindcast
 
 if [ ${product} == 'hindcast' ]
