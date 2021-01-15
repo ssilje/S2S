@@ -4,7 +4,7 @@ run_dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 echo $run_dir
 forcastcycle='CY46R1'
 
-var='tp' # sst, t2m, tp
+var='sst' # sst, t2m, tp
 ftype='pf' #cf, pf
 product='forecast' # forecast, hindcast
 
