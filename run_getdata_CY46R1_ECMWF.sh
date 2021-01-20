@@ -1,12 +1,20 @@
 #!/bin/bash
+# Scripts to download S2S model forecasts from ECMWF's Web-API
+# Edit the dirbase, var, ftype, product
+# To run: ./run_getdata_CY46R1_ECMWF.sh
+# contact: ssor@norceresearch.no
 
 run_dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 echo $run_dir
+
+### Edit here ####
 dirbase='/nird/projects/nird/NS9853K/DATA/S2S' # Make sure this dir exist
 echo ${dirbase}
+
 Model='ECMWF'
 forcastcycle='CY46R1'
 
+### Edit here ####
 var='sst' # sst, t2m, tp
 ftype='cf' #cf, pf
 product='hindcast' # forecast, hindcast
