@@ -61,9 +61,9 @@ The data structure:
 #### S2S/hindcast/_modeling-center_/_type-files_/_variable-name_/
 
 where (add the information when new models, variables are included)
-_modeling-center_: ECMWF
-_type-files_: sfc, pl
-_variable-name_: tp (accumulated), t2m
+- _modeling-center_: ECMWF
+- _type-files_: sfc, pl
+- _variable-name_: tp (accumulated), t2m
 
 Information about the different model is given here: https://confluence.ecmwf.int/display/S2S/Models
 
