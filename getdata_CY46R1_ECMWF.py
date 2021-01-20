@@ -4,7 +4,6 @@ import os,sys
 from datetime import datetime
 server = ECMWFDataServer()
 product = 'PRODUCT' # forecast
-#dirbase = '/cluster/work/users/sso102/S2S/'
 dirbase = 'BASEDIR'
 dir = '%s/%s/%s/'%(dirbase,product,'/ECMWF/sfc')
 forcastcycle = 'CY46R1'
