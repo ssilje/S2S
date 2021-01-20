@@ -3,7 +3,7 @@
 run_dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 echo $run_dir
 dirbase='/nird/projects/nird/NS9853K/DATA/S2S' # Make sure this dir exist
-Model=ECMWF
+Model='ECMWF'
 forcastcycle='CY46R1'
 
 var='sst' # sst, t2m, tp
