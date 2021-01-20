@@ -85,12 +85,12 @@ for filename in (
                     if prefix == 'pf':
                         ll = range(1,11,1) # 10 members
                         paired = '/'.join(['/'.join([str(v) for v in ll[i:i + 1]]) for i in range(len(ll))])
-                        dic['number'] =  "'%s'" %(paired)
+                        dic['number'] =  '%s' %(paired)
                 if ( product == 'forecast' ):
                     if prefix == 'pf':
                         ll = range(1,51,1) # 50 members
                         paired = '/'.join(['/'.join([str(v) for v in ll[i:i + 1]]) for i in range(len(ll))])
-                        dic['number'] =  "'%s'" %(paired)
+                        dic['number'] =  '%s' %(paired)
                 dic['target'] = target
                 
                 print(dic)
