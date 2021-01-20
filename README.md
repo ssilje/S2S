@@ -68,13 +68,14 @@ where (add the information when new models, variables are included)
 Information about the different model is given here: https://confluence.ecmwf.int/display/S2S/Models
 
 Information about the specific models that is downloaded: 
-ECMWF: 
-Model version CY46R1, https://confluence.ecmwf.int/display/S2S/ECMWF+Model+Description+CY46R1)
-Data time of first forecast run:   11 June 2019
-First forecast downloaed: 2019-07-01 and one year (2020-06-29)
-Hindcast: 20 years
-Ensemble members: 
-forecast 50 + 1
-hindcast 10 + 1
+
+#### ECMWF: 
+- Model version CY46R1, https://confluence.ecmwf.int/display/S2S/ECMWF+Model+Description+CY46R1)
+- Data time of first forecast run:   11 June 2019
+- First forecast downloaed: 2019-07-01 and one year (2020-06-29)
+- Hindcast: 20 years
+- Ensemble members: 
+  - forecast 50 + 1
+  - hindcast 10 + 1
   
   
