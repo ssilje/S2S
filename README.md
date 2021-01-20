@@ -34,5 +34,46 @@ Need to set in the script:
 
 run the script as: ./run_getdata_CY46R1_ECMWF.sh
 
+
+------------------------------------------------------------------------------------------------------------
+The data downloaded will be part of S2S data pool to be used for CONFER and CLIMATE FUTURES
+------------------------------------------------------------------------------------------------------------
+To access the data form  NIRD: /nird/projects/NS9853K/DATA/S2S 
+To access from FRAM: /nird/projects/nird/NS9853K/DATA/S2S 
+
+Creation date: 12.01.2021
+contact: Silje Lund Sørland, ssor@norceresearch.no
+
+### Information:
+
+S2S: sub-seasonal to seasonal prediction project. Web: https://confluence.ecmwf.int/display/S2S
+It is a WWRP/THORPEX-WCRP joint research project established to improve forecast skill and understanding on the sub-seasonal to seasonal time scale
+
+The S2S data are downloaded from ECMWF's MARS archive: https://confluence.ecmwf.int/display/WEBAPI/Access+ECMWF+Public+Datasets
+ 
+The data is downloaded on a 1x1 degree grid. Note that the different models have different resolutions (and the model have different resolution for different lead-times).
+
+The data is donwloaded as hindcast and forecast, with the associated ensemble members. 
+
+The data structure: 
+
+S2S/hindcast/<modeling-center>/<type-files>/<variable-name>/
+
+where (add the information when new models, variables are included)
+<modeling-center>: ECMWF
+<type-files>: sfc, pl
+<variable-name>: tp (accumulated), t2m
+
+Information about the different model is given here: https://confluence.ecmwf.int/display/S2S/Models
+
+Information about the specific models that is downloaded: 
+ECMWF: 
+Model version CY46R1, https://confluence.ecmwf.int/display/S2S/ECMWF+Model+Description+CY46R1)
+Data time of first forecast run:   11 June 2019
+First forecast downloaed: 2019-07-01 and one year (2020-06-29)
+Hindcast: 20 years
+Ensemble members: 
+forecast 50 + 1
+hindcast 10 + 1
   
   
