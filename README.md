@@ -36,9 +36,10 @@ run the script as: ./run_getdata_CY46R1_ECMWF.sh
 
 
 ------------------------------------------------------------------------------------------------------------
-The data downloaded will be part of S2S data pool to be used for CONFER and CLIMATE FUTURES
-------------------------------------------------------------------------------------------------------------
+#### The data downloaded will be part of S2S data pool to be used for CONFER and CLIMATE FUTURES
+
 To access the data form  NIRD: /nird/projects/NS9853K/DATA/S2S 
+
 To access from FRAM: /nird/projects/nird/NS9853K/DATA/S2S 
 
 Creation date: 12.01.2021
