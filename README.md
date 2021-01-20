@@ -36,7 +36,7 @@ run the script as: ./run_getdata_CY46R1_ECMWF.sh
 
 
 ------------------------------------------------------------------------------------------------------------
-#### The data downloaded will be part of S2S data pool to be used for CONFER and CLIMATE FUTURES
+#### The data downloaded can be used by CONFER and CLIMATE FUTURES
 
 To access the data form  NIRD: /nird/projects/NS9853K/DATA/S2S 
 
@@ -58,12 +58,12 @@ The data is donwloaded as hindcast and forecast, with the associated ensemble me
 
 The data structure: 
 
-S2S/hindcast/<modeling-center>/<type-files>/<variable-name>/
+#### S2S/hindcast/_modeling-center_/_type-files_/_variable-name_/
 
 where (add the information when new models, variables are included)
-<modeling-center>: ECMWF
-<type-files>: sfc, pl
-<variable-name>: tp (accumulated), t2m
+_modeling-center_: ECMWF
+_type-files_: sfc, pl
+_variable-name_: tp (accumulated), t2m
 
 Information about the different model is given here: https://confluence.ecmwf.int/display/S2S/Models
 
