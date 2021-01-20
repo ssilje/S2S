@@ -4,7 +4,7 @@ import os,sys
 from datetime import datetime
 server = ECMWFDataServer()
 product = 'PRODUCT' # forecast
-dirbase = '/cluster/work/users/sso102/S2S/'
+dirbase = 'BASEDIR'
 dir = '%s/%s/%s/'%(dirbase,product,'/ECMWF/sfc')
 forcastcycle = 'CY46R1'
 
@@ -83,10 +83,14 @@ for filename in (
                 if ( product == 'hindcast' ):
                     dic['hdate'] = hdate
                     if prefix == 'pf':
-                        dic['number'] = '1/2/3/4/5/6/7/8/9/10'
+                        ll = range(1,11,1) # 10 members
+                        paired = '/'.join(['/'.join([str(v) for v in ll[i:i + 1]]) for i in range(len(ll))])
+                        dic['number'] =  '%s' %(paired)
                 if ( product == 'forecast' ):
                     if prefix == 'pf':
-                        dic['number'] = '1/2/3/4/5/6/7/8/9/10/11/12/13/14/15/16/17/18/19/20/21/22/23/24/25/26/27/28/29/30/31/32/33/34/35/36/37/38/39/40/41/42/43/44/45/46/47/48/49/50'
+                        ll = range(1,51,1) # 50 members
+                        paired = '/'.join(['/'.join([str(v) for v in ll[i:i + 1]]) for i in range(len(ll))])
+                        dic['number'] =  '%s' %(paired)
                 dic['target'] = target
                 
                 print(dic)

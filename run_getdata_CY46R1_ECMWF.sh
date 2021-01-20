@@ -2,11 +2,14 @@
 
 run_dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 echo $run_dir
+dirbase='/nird/projects/nird/NS9853K/DATA/S2S' # Make sure this dir exist
+echo ${dirbase}
+Model='ECMWF'
 forcastcycle='CY46R1'
 
-var='tp' # sst, t2m, tp
+var='sst' # sst, t2m, tp
 ftype='pf' #cf, pf
-product='forecast' # forecast, hindcast
+product='hindcast' # forecast, hindcast
 
 if [ ${product} == 'hindcast' ]
 then
@@ -16,8 +19,12 @@ then
 stream=enfo
 fi
 
-savedir=/cluster/work/users/sso102/S2S/${product}/ECMWF/sfc/${var} #needs to match the dir in getdata_TP_CY46R1_ECMWF.py
+savedir=${dirbase}/${product}/${Model}/sfc/${var} #needs to match the dir in getdata_TP_CY46R1_ECMWF.py
 
+if [ ! -d ${savedir}/ ]
+then
+    mkdir ${savedir}
+fi
 
 if [ ! -d ${run_dir}/jobs.$$ ]
 then
@@ -27,11 +34,7 @@ else
     mkdir ${run_dir}/jobs.$$
 fi
 
-if [ ! -d ${savedir} ]
-then
-    mkdir ${savedir}
 
-fi
 
 # Reforecasts with the model version CY46R1: https://confluence.ecmwf.int/display/S2S/ECMWF+Model+Description+CY46R1
 # Data time of first forecast run:   11 June 2019
@@ -62,6 +65,7 @@ for d in ${DATE}; do
     sed -i "s/ftype/${ftype}/g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py
     sed -i "s/STREAM/${stream}/g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py
     sed -i "s/PRODUCT/${product}/g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py
+    sed -i "s|BASEDIR|${dirbase}|g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py
     
 
     
