@@ -93,3 +93,4 @@ for d in ${DATE}; do
      ## TO do: Add a check that the file size is correct
      echo "removing ${run_dir}/jobs.$$"
      rm -r ${run_dir}/jobs.$$
+     echo "DONE.."
