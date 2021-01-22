@@ -47,14 +47,14 @@ meta = {
         'levtype': 'sfc',
         'grid': '1/1',
         'step': '/'.join([final24]) 
-    }
+    },
     
      'u10': {
         'param': '165',  
         'levtype': 'sfc',
         'grid': '1/1',
         'step': '/'.join([final6]) 
-    }
+    },
     
     'v10': {
         'param': '166',  
@@ -62,9 +62,6 @@ meta = {
         'grid': '1/1',
         'step': '/'.join([final6]) 
     }
-    
-    
-
 }
 
 def getdatesformonth(month):
