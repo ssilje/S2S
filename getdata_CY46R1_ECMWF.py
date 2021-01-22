@@ -48,14 +48,14 @@ meta = {
         'param': '165',  
         'levtype': 'sfc',
         'grid': '1/1',
-        'step': '/'.join(['%i'%i for i in range(0,1104,6)]) 
+        'step': '/'.join(['%i'%i for i in range(0,1104,24)]) 
     },
     
     'v10': {
         'param': '166',  
         'levtype': 'sfc',
         'grid': '1/1',
-        'step': '/'.join(['%i'%i for i in range(0,1104,6)]) 
+        'step': '/'.join(['%i'%i for i in range(0,1104,24)]) 
     }
 }
 
