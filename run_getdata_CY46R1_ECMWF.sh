@@ -15,7 +15,7 @@ Model='ECMWF'
 forcastcycle='CY46R1'
 
 ### Edit here ####
-var='sst' # sst, t2m, tp
+var='v10' # sst, t2m, tp, u10, v10
 ftype='cf' #cf, pf
 product='forecast' # forecast, hindcast
 
