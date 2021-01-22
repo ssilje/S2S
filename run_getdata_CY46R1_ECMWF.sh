@@ -16,7 +16,7 @@ forcastcycle='CY46R1'
 
 ### Edit here ####
 var='sst' # sst, t2m, tp
-ftype='pf' #cf, pf
+ftype='cf' #cf, pf
 product='forecast' # forecast, hindcast
 
 if [ ${product} == 'hindcast' ]
