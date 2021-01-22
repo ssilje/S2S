@@ -34,14 +34,14 @@ meta = {
         'param': '167',  
         'levtype': 'sfc',
         'grid': '1/1',
-        'step': '/'.join([final24]) 
+        'step': '/'.join([final]) 
     },
     
      'sst': {
         'param': '34',  
         'levtype': 'sfc',
         'grid': '1/1',
-        'step': '/'.join([final24]) 
+        'step': '/'.join([final]) 
     },
     
      'u10': {
