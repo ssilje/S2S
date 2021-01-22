@@ -18,14 +18,9 @@ basedict = {
     'time': '00:00:00'
 }
 
-l24 = range(0,1128,24)
-paired24 = ['-'.join([str(v) for v in l24[i:i + 2]]) for i in range(len(l24))]
-final24 = '/'.join(paired24[0:-1])
-
-# wind components are Instantaneous values. Need to confirm the time resilution. For now I donwload the highest temporal resolution to make a daily mean.Should I do this for t2s,sst also?
-l6 = range(0,1128,6)
-paired6 = ['-'.join([str(v) for v in l6[i:i + 2]]) for i in range(len(l6))]
-final6 = '/'.join(paired6[0:-1])
+l = range(0,1128,24)
+paired = ['-'.join([str(v) for v in l[i:i + 2]]) for i in range(len(l))]
+final = '/'.join(paired[0:-1])
 
 meta = {
     'tp': {
@@ -53,14 +48,14 @@ meta = {
         'param': '165',  
         'levtype': 'sfc',
         'grid': '1/1',
-        'step': '/'.join([final6]) 
+        'step': '/'.join(['%i'%i for i in range(0,1104,6)]) 
     },
     
     'v10': {
         'param': '166',  
         'levtype': 'sfc',
         'grid': '1/1',
-        'step': '/'.join([final6]) 
+        'step': '/'.join(['%i'%i for i in range(0,1104,6)]) 
     }
 }
 
