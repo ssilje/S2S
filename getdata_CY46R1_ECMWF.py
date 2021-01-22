@@ -27,7 +27,7 @@ meta = {
         'param': '228228',  
         'levtype': 'sfc',
         'grid': '1/1',
-        'step': '/'.join(['%i'%i for i in range(0,1104,24)]) 
+        'step': '/'.join(['%i'%i for i in range(0,1128,24)]) 
     },
     
      't2m': {
@@ -48,14 +48,14 @@ meta = {
         'param': '165',  
         'levtype': 'sfc',
         'grid': '1/1',
-        'step': '/'.join(['%i'%i for i in range(0,1104,24)]) 
+        'step': '/'.join(['%i'%i for i in range(0,1128,24)]) 
     },
     
     'v10': {
         'param': '166',  
         'levtype': 'sfc',
         'grid': '1/1',
-        'step': '/'.join(['%i'%i for i in range(0,1104,24)]) 
+        'step': '/'.join(['%i'%i for i in range(0,1128,24)]) 
     }
 }
 
