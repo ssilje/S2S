@@ -12,7 +12,7 @@ dirbase='/nird/projects/nird/NS9853K/DATA/S2S' # Make sure this dir exist
 echo ${dirbase}
 
 Model='ECMWF'
-forcastcycle='CY46R1'
+fcycle='CY46R1'
 
 ### Edit here ####
 var='v10' # sst, t2m, tp, u10, v10
@@ -67,20 +67,20 @@ for d in ${DATE}; do
     y=$(echo ${d} | cut -d'-' -f1)
     m=$(echo ${d} | cut -d'-' -f2)
     day=$(echo ${d} | cut -d'-' -f3)
-    cp $run_dir/getdata_${forcastcycle}_ECMWF.py $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py 
-    sed -i "s/2018-01-01/$d/g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py 
-    sed -i "s/VAR/${var}/g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py
-    sed -i "s/ftype/${ftype}/g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py
-    sed -i "s/STREAM/${stream}/g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py
-    sed -i "s/PRODUCT/${product}/g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py
-    sed -i "s|BASEDIR|${dirbase}|g" $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py
+    cp $run_dir/getdata_${fcycle}_ECMWF.py $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}.py 
+    sed -i "s/2018-01-01/$d/g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}.py 
+    sed -i "s/VAR/${var}/g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}.py
+    sed -i "s/ftype/${ftype}/g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}.py
+    sed -i "s/STREAM/${stream}/g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}.py
+    sed -i "s/PRODUCT/${product}/g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}.py
+    sed -i "s|BASEDIR|${dirbase}|g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}.py
     
 
     
                
-    if [ ! -f ${savedir}/${var}_${forcastcycle}_${d}_${ftype}.grb ] ; then   #tp_CY46R1_2020-02-27_pf.grb
-            echo "running python getdata_${forcastcycle}_ECMWF_${d}.py  "
-            python $run_dir/jobs.$$/getdata_${forcastcycle}_ECMWF_${d}.py 
+    if [ ! -f ${savedir}/${var}_${fcycle}_${d}_${ftype}.grb ] ; then   #tp_CY46R1_2020-02-27_pf.grb
+            echo "running python getdata_${fcycle}_ECMWF_${d}.py  "
+            python $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}.py 
             wait
             echo "done..."
           else 
