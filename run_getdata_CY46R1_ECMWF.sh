@@ -64,30 +64,32 @@ DATE='2019-07-01 2019-07-04 2019-07-08 2019-07-11 2019-07-15 2019-07-18 2019-07-
 
 
 for d in ${DATE}; do 
-    y=$(echo ${d} | cut -d'-' -f1)
-    m=$(echo ${d} | cut -d'-' -f2)
-    day=$(echo ${d} | cut -d'-' -f3)
-    cp $run_dir/getdata_${fcycle}_ECMWF.py $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}.py 
-    sed -i "s/2018-01-01/$d/g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}.py 
-    sed -i "s/VAR/${var}/g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}.py
-    sed -i "s/ftype/${ftype}/g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}.py
-    sed -i "s/STREAM/${stream}/g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}.py
-    sed -i "s/PRODUCT/${product}/g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}.py
-    sed -i "s|BASEDIR|${dirbase}|g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}.py
-    
-
-    
-               
-    if [ ! -f ${savedir}/${var}_${fcycle}_${d}_${ftype}.grb ] ; then   #tp_CY46R1_2020-02-27_pf.grb
-            echo "running python getdata_${fcycle}_ECMWF_${d}.py  "
-            python $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}.py 
-            wait
-            echo "done..."
-          else 
-            echo " File already downloded "
-           fi  
-                
-    
+    HC='0'
+        
+     while [ ${HC} -le 20  ] # 20 years hindcast
+       do
+        yHC=`expr ${y} - $HC`
+        echo $yHC
+        echo $d
+        y=$(echo ${d} | cut -d'-' -f1)
+        m=$(echo ${d} | cut -d'-' -f2)
+        day=$(echo ${d} | cut -d'-' -f3)
+        cp $run_dir/getdata_${fcycle}_ECMWF.py $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}_${HC}.py 
+        sed -i "s/2018-01-01/$d/g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}_${HC}.py 
+        sed -i "s/VAR/${var}/g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}_${HC}.py
+        sed -i "s/ftype/${ftype}/g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}_${HC}.py
+        sed -i "s/STREAM/${stream}/g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}_${HC}.py
+        sed -i "s/PRODUCT/${product}/g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}_${HC}.py
+        sed -i "s|BASEDIR|${dirbase}|g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}_${HC}.py
+        sed -i "s/yy = 0/yy = ${HC}/g" $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}_${HC}.py
+   
+        echo "running python getdata_${fcycle}_ECMWF_${d}_${HC}.py  "
+        python $run_dir/jobs.$$/getdata_${fcycle}_ECMWF_${d}_${HC}.py 
+        wait
+        echo "done..."
+        
+        HC=`expr ${HC} + 1`        
+     done
      done
      
      ## TO do: Add a check that the file size is correct
