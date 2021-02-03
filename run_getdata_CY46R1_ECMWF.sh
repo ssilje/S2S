@@ -15,7 +15,7 @@ Model='ECMWF'
 fcycle='CY46R1'
 
 ### Edit here ####
-var='v10' # sst, t2m, tp, u10, v10
+var='sst' # sst, t2m, tp, u10, v10
 ftype='pf' #cf, pf
 product='hindcast' # forecast, hindcast
 
@@ -64,7 +64,7 @@ DATE='2019-07-01 2019-07-04 2019-07-08 2019-07-11 2019-07-15 2019-07-18 2019-07-
 
 
 for d in ${DATE}; do 
-    HC='0'
+    HC='1'
         
      while [ ${HC} -le 20  ] # 20 years hindcast
        do
