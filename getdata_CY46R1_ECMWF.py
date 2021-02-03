@@ -80,12 +80,14 @@ for filename in (
         for d in dates:
             refyear = int(d[:4])
             prefix = 'ftype'
+            yy = 0
+            i =refyear-yy
             datadir = '%s/%s'%(dir,filename)
             if not os.path.exists(datadir)  :
                 os.makedirs(datadir)
-            hdate = '/'.join([d.replace('%i'%refyear,'%i'%i) for i in range(refyear-20,refyear)])
-            target = '%s/%s_%s_%s_%s.grb'%(datadir,filename,forcastcycle,d,prefix)
-
+            hdate = '/'.join([d.replace('%i'%refyear,'%i'%i)])
+            #hdate = '/'.join([d.replace('%i'%refyear,'%i'%i) for i in range(refyear-20,refyear)])
+            target = '%s/%s_%s_%s_%s_%s.grb'%(datadir,filename,forcastcycle,d,prefix,hdate)
         
             if not os.path.isfile(target):
                 dic = basedict.copy()
