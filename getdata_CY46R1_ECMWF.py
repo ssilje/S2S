@@ -72,7 +72,7 @@ for filename in (
     for dates in dates_monday:
         d = dates.strftime('%Y-%m-%d')
         refyear = int(d[:4])
-        prefix = 'ftype'
+        prefix = 'pf'
         datadir = '%s/%s'%(dir,filename)
         if not os.path.exists(datadir)  :
             os.makedirs(datadir)
