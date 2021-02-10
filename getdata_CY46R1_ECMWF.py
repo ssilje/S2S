@@ -6,7 +6,7 @@ from datetime import datetime
 server = ECMWFDataServer()
 product = 'hindcast' # forecast, hincast
 dirbase = '/nird/projects/nird/NS9853K/DATA/S2S'
-dir = '%s/%s/%s/'%(dirbase,product,'/ECMWF/sfc')
+dir = '%s/%s/%s/'%(dirbase,product,'/ECMWF/sfc2')
 forcastcycle = 'CY46R1'
 # 'hindcast' stream=enfh 
 # 'forecast' stream=enfo
@@ -67,7 +67,7 @@ dates_thursday = pd.date_range("20190704", periods=52, freq="7D") # forecats sta
     
    # Program start
 for filename in (
-    't2m',
+    'sst',
 ):
     for dates in dates_monday:
         d = dates.strftime('%Y-%m-%d')
