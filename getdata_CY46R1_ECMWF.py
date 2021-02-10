@@ -8,14 +8,15 @@ product = 'hindcast' # forecast, hincast
 dirbase = '/nird/projects/nird/NS9853K/DATA/S2S'
 dir = '%s/%s/%s/'%(dirbase,product,'/ECMWF/sfc')
 forcastcycle = 'CY46R1'
-
+# 'hindcast' stream=enfh 
+# 'forecast' stream=enfo
 basedict = {
     'class': 's2',
     'dataset': 's2s',
     'expver': 'prod',
     'model': 'glob',
     'origin': 'ecmf',
-    'stream': 'STREAM',
+    'stream': 'enfh', 
     'time': '00:00:00'
 }
 
