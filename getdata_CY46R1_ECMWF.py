@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from ecmwfapi import ECMWFDataServer
 import os,sys
+import pandas as pd
 from datetime import datetime
 server = ECMWFDataServer()
 product = 'hindcast' # forecast, hincast
