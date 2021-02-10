@@ -67,7 +67,7 @@ dates_thursday = pd.date_range("20190704", periods=52, freq="7D") # forecats sta
     
    # Program start
 for filename in (
-    'tp',
+    't2m',
 ):
     for dates in dates_monday:
         d = dates.strftime('%Y-%m-%d')
