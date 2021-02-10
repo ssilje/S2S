@@ -5,7 +5,7 @@ import pandas as pd
 from datetime import datetime
 server = ECMWFDataServer()
 product = 'hindcast' # forecast, hincast
-dirbase = '/nird/projects/NS9853K/DATA/S2S'
+dirbase = '/nird/projects/nird/NS9853K/DATA/S2S'
 dir = '%s/%s/%s/'%(dirbase,product,'/ECMWF/sfc')
 forcastcycle = 'CY46R1'
 
