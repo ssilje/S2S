@@ -67,8 +67,8 @@ meta = {
     }
 }
 
-dates_monday = pd.date_range("20190701", periods=52, freq="7D") # forecats start Monday
-dates_thursday = pd.date_range("20190704", periods=52, freq="7D") # forecats start Thursday
+dates_monday = pd.date_range("20190701", periods=52, freq="7D") # forecasts start Monday
+dates_thursday = pd.date_range("20190704", periods=52, freq="7D") # forecasts start Thursday
    
     
    # Program start
