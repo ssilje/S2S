@@ -11,16 +11,18 @@ forcastcycle = 'CY46R1'
 # 'hindcast' stream=enfh 
 # 'forecast' stream=enfo
 
+if product == 'hindcast':
+    STREAM =  'enfh', 
+if product == 'forecast':
+    STREAM = 'enfo', 
+        
 basedict = {
     'class': 's2',
     'dataset': 's2s',
     'expver': 'prod',
     'model': 'glob',
     'origin': 'ecmf',
-    if product == 'hindcast':
-        'stream': 'enfh', 
-    if product == 'forecast':
-        'stream': 'enfo', 
+    'stream': STREAM ,
     'time': '00:00:00'
 }
 
