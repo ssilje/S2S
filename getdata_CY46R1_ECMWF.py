@@ -10,13 +10,17 @@ dir = '%s/%s/%s/'%(dirbase,product,'/ECMWF/sfc')
 forcastcycle = 'CY46R1'
 # 'hindcast' stream=enfh 
 # 'forecast' stream=enfo
+
 basedict = {
     'class': 's2',
     'dataset': 's2s',
     'expver': 'prod',
     'model': 'glob',
     'origin': 'ecmf',
-    'stream': 'enfh', 
+    if product == 'hindcast':
+        'stream': 'enfh', 
+    if product == 'forecast':
+        'stream': 'enfo', 
     'time': '00:00:00'
 }
 
@@ -69,7 +73,7 @@ dates_thursday = pd.date_range("20190704", periods=52, freq="7D") # forecats sta
 for filename in (
     'tp',
 ):
-    for dates in dates_monday:
+    for dates in dates_thursday:
         d = dates.strftime('%Y-%m-%d')
         refyear = int(d[:4])
         prefix = 'pf'
